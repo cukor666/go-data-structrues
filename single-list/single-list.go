@@ -52,5 +52,14 @@ func (sl *SingleList[T]) Preappend(data T) *node[T] {
 
 // 尾插入
 func (sl *SingleList[T]) Append(data T) *node[T] {
-	return nil
+	n := NewNode[T](data, nil)
+	if sl.size == 0 {
+		sl.head = n
+		sl.rear = n
+	} else {
+		sl.rear.Next = n
+		sl.rear = n
+	}
+	sl.size++
+	return n
 }

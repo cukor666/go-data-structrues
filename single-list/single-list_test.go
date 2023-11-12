@@ -5,11 +5,22 @@ import (
 	"testing"
 )
 
-func TestSingleList(t *testing.T) {
+// 测试头部插入
+func TestPreappend(t *testing.T) {
 	sl := NewSingleList[int]()
 	sl.Preappend(66)
 	sl.Preappend(33)
 	sl.Preappend(99)
+	fmt.Printf("size = %d\n", sl.Size())
+	sl.Show()
+}
+
+// 测试尾部插入
+func TestAppend(t *testing.T) {
+	sl := NewSingleList[int]()
+	sl.Append(132)
+	sl.Append(13)
+	sl.Append(12)
 	fmt.Printf("size = %d\n", sl.Size())
 	sl.Show()
 }
