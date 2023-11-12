@@ -62,5 +62,37 @@ func (sl *SingleList[T]) Preappend(data T) *node[T] {
 
 // 尾插入
 func (sl *SingleList[T]) Append(data T) *node[T] {
-	return sl.Insert(data, sl.rear)
+	n := sl.Insert(data, sl.rear)
+	sl.rear = n
+	return n
+}
+
+// 头部删除
+func (sl *SingleList[T]) RemoveHead() *node[T] {
+	if sl.size == 0 {
+		return nil
+	}
+	p := sl.head
+	sl.head = sl.head.Next
+	p.Next = nil
+	sl.size--
+	return p
+}
+
+// 尾部删除
+func (sl *SingleList[T]) RemoveRear() *node[T] {
+	if sl.size == 0 {
+		return nil
+	}
+	p := sl.head
+	for p != nil && p.Next != sl.rear {
+		p = p.Next
+	}
+	if p != nil {
+		p.Next = nil
+		sl.rear = p
+		sl.size--
+		return p
+	}
+	return nil
 }

@@ -45,3 +45,30 @@ func TestInsert2(t *testing.T) {
 	fmt.Printf("size = %d\n", sl.Size())
 	sl.Show()
 }
+
+func TestRemoveHead(t *testing.T) {
+	sl := NewSingleList[int]()
+	sl.Append(3)
+	sl.Append(1)
+	sl.Append(7)
+	sl.Append(4)
+	sl.Append(0)
+	sl.Show()
+	sl.RemoveHead()
+	sl.RemoveHead()
+	sl.Show()
+}
+
+func TestRemoveRear(t *testing.T) {
+	sl := NewSingleList[int]()
+	sl.Append(3)
+	sl.Append(1)
+	sl.Append(7)
+	sl.Append(4)
+	sl.Append(0)
+	sl.Show()
+	sl.RemoveRear()
+	sl.RemoveRear()
+	sl.Show()
+	fmt.Printf("sl.size: %v\n", sl.size)
+}
