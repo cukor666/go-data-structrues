@@ -123,3 +123,10 @@ func (sl *SingleList[T]) Remove(addr *node[T]) *node[T] {
 	sl.size--
 	return p
 }
+
+// 根据地址查询，然后修改内容
+func (sl *SingleList[T]) Modify(addr *node[T], data T) T {
+	oldData := addr.Data
+	addr.Data = data
+	return oldData
+}
