@@ -24,3 +24,24 @@ func TestAppend(t *testing.T) {
 	fmt.Printf("size = %d\n", sl.Size())
 	sl.Show()
 }
+
+func TestInsert(t *testing.T) {
+	sl := NewSingleList[int]()
+	sl.Preappend(4)
+	n := sl.Preappend(5)
+	n = sl.Insert(88, n)
+	n = sl.Insert(99, n)
+	sl.Insert(101, n)
+	sl.Insert(87, sl.rear)
+	fmt.Printf("size = %d\n", sl.Size())
+	sl.Show()
+}
+
+func TestInsert2(t *testing.T) {
+	sl := NewSingleList[int]()
+	sl.Insert(8, sl.rear)
+	sl.Insert(9, sl.rear)
+	sl.Insert(10, sl.rear)
+	fmt.Printf("size = %d\n", sl.Size())
+	sl.Show()
+}
