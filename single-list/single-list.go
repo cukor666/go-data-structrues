@@ -67,6 +67,21 @@ func (sl *SingleList[T]) Append(data T) *node[T] {
 	return n
 }
 
+// 遍历链表获取地址
+func (sl *SingleList[T]) Address(start, end *node[T], values []T) (res []*node[T]) {
+	count := len(values)
+	if start == nil || count == 0 {
+		return nil
+	}
+	for i, p := 0, start; i < count && p != end; p = p.Next {
+		if p.Data == values[i] {
+			res = append(res, p)
+			i++
+		}
+	}
+	return
+}
+
 // 头部删除
 func (sl *SingleList[T]) RemoveHead() *node[T] {
 	if sl.size == 0 {
@@ -95,4 +110,16 @@ func (sl *SingleList[T]) RemoveRear() *node[T] {
 		return p
 	}
 	return nil
+}
+
+// 根据地址删除
+func (sl *SingleList[T]) Remove(addr *node[T]) *node[T] {
+	if sl.size == 0 || addr == nil {
+		return nil
+	}
+	p := addr.Next
+	addr.Next = p.Next
+	p.Next = nil
+	sl.size--
+	return p
 }

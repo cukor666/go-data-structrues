@@ -72,3 +72,36 @@ func TestRemoveRear(t *testing.T) {
 	sl.Show()
 	fmt.Printf("sl.size: %v\n", sl.size)
 }
+
+func TestAddress(t *testing.T) {
+	sl := NewSingleList[int]()
+	sl.Append(3)
+	sl.Append(1)
+	sl.Append(7)
+	sl.Append(4)
+	sl.Append(0)
+	sl.Show()
+	res := sl.Address(sl.head, sl.rear, []int{1, 4})
+	fmt.Printf("address: %v\n", res)
+	for _, v := range res {
+		fmt.Printf("v = %v", v)
+	}
+}
+
+func TestRemoveUseAddress(t *testing.T) {
+	sl := NewSingleList[int]()
+	sl.Append(3)
+	sl.Append(1)
+	sl.Append(5)
+	sl.Append(7)
+	sl.Append(8)
+	sl.Append(4)
+	sl.Append(0)
+	sl.Show()
+	res := sl.Address(sl.head, sl.rear, []int{1, 7, 4})
+	n := len(res)
+	for i := 0; i < n; i++ {
+		sl.Remove(res[i])
+	}
+	sl.Show()
+}
