@@ -7,6 +7,15 @@ type SingleList[T comparable] struct {
 	size uint
 }
 
+// 单链表构造函数
+func NewSingleList[T comparable]() *SingleList[T] {
+	sl := new(SingleList[T])
+	sl.Head = nil
+	sl.Rear = nil
+	sl.size = 0
+	return sl
+}
+
 // 获取链表的大小
 func (sl SingleList[T]) Size() uint {
 	return sl.size
@@ -19,6 +28,7 @@ func (sl SingleList[T]) Empty() bool {
 
 // 头插入
 func (sl SingleList[T]) Preappend(data T) *node[T] {
+
 	return nil
 }
 
